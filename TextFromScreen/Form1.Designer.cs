@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             OpenScreenshotFormBtn = new Button();
             TakeScreeenshotBtn = new Button();
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            imageList1 = new ImageList(components);
+            richTextBox1 = new RichTextBox();
             SuspendLayout();
             // 
             // OpenScreenshotFormBtn
             // 
             OpenScreenshotFormBtn.AutoSize = true;
-            OpenScreenshotFormBtn.Location = new Point(12, 30);
+            OpenScreenshotFormBtn.Location = new Point(15, 77);
             OpenScreenshotFormBtn.Name = "OpenScreenshotFormBtn";
             OpenScreenshotFormBtn.Size = new Size(104, 30);
             OpenScreenshotFormBtn.TabIndex = 0;
@@ -49,7 +51,7 @@
             // 
             TakeScreeenshotBtn.AutoSize = true;
             TakeScreeenshotBtn.Enabled = false;
-            TakeScreeenshotBtn.Location = new Point(122, 30);
+            TakeScreeenshotBtn.Location = new Point(3, 12);
             TakeScreeenshotBtn.Name = "TakeScreeenshotBtn";
             TakeScreeenshotBtn.Size = new Size(129, 30);
             TakeScreeenshotBtn.TabIndex = 1;
@@ -57,25 +59,34 @@
             TakeScreeenshotBtn.UseVisualStyleBackColor = true;
             TakeScreeenshotBtn.Click += TakeScreeenshotBtn_Click;
             // 
-            // pictureBox1
+            // imageList1
             // 
-            pictureBox1.Location = new Point(293, 30);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(188, 131);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            imageList1.ColorDepth = ColorDepth.Depth8Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "free-icon-font-add-image-13727439.png");
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(138, 14);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(590, 95);
+            richTextBox1.TabIndex = 4;
+            richTextBox1.Text = "";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(618, 195);
-            Controls.Add(pictureBox1);
+            AutoSize = true;
+            ClientSize = new Size(734, 115);
+            Controls.Add(richTextBox1);
             Controls.Add(TakeScreeenshotBtn);
             Controls.Add(OpenScreenshotFormBtn);
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            TopMost = true;
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -84,6 +95,7 @@
 
         private Button OpenScreenshotFormBtn;
         private Button TakeScreeenshotBtn;
-        private PictureBox pictureBox1;
+        private ImageList imageList1;
+        private RichTextBox richTextBox1;
     }
 }
