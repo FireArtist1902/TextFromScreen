@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             OpenScreenshotFormBtn = new Button();
             TakeScreeenshotBtn = new Button();
-            imageList1 = new ImageList(components);
             richTextBox1 = new RichTextBox();
             SuspendLayout();
             // 
@@ -59,13 +56,6 @@
             TakeScreeenshotBtn.UseVisualStyleBackColor = true;
             TakeScreeenshotBtn.Click += TakeScreeenshotBtn_Click;
             // 
-            // imageList1
-            // 
-            imageList1.ColorDepth = ColorDepth.Depth8Bit;
-            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
-            imageList1.TransparentColor = Color.Transparent;
-            imageList1.Images.SetKeyName(0, "free-icon-font-add-image-13727439.png");
-            // 
             // richTextBox1
             // 
             richTextBox1.Location = new Point(138, 14);
@@ -86,7 +76,6 @@
             Name = "Form1";
             Text = "Form1";
             TopMost = true;
-            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -95,7 +84,6 @@
 
         private Button OpenScreenshotFormBtn;
         private Button TakeScreeenshotBtn;
-        private ImageList imageList1;
         private RichTextBox richTextBox1;
     }
 }

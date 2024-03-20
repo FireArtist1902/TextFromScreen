@@ -29,12 +29,32 @@ namespace TextFromScreen
             take.Visible = true;
         }
 
-        private void TakeScreeenshotBtn_Click(object sender, EventArgs e)
+        private async void TakeScreeenshotBtn_Click(object sender, EventArgs e)
         {
-
             Visible = false;
             take.Visible = false;
-            Thread.Sleep(10);
+            await TakeScreeshot();
+            Visible = true;
+            take.Enabled = false;
+            TakeScreeenshotBtn.Enabled = false;
+            richTextBox1.Text = GetTextFromScreenshot().Result;
+            Clipboard.SetText(richTextBox1.Text);
+        }
+
+        private async Task<string> GetTextFromScreenshot()
+        {
+            IronTesseract ocr = new IronTesseract();
+            ocr.AddSecondaryLanguage(OcrLanguage.Russian);
+            ocr.AddSecondaryLanguage(OcrLanguage.Ukrainian);
+            using (var Input = new IronOcr.OcrInput("test.jpg"))
+            {
+                OcrResult result = ocr.Read(Input);
+                return result.Text;
+            }
+        }
+
+        private async Task TakeScreeshot()
+        {
             Rectangle bounds = take.Bounds;
             using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
             {
@@ -44,28 +64,6 @@ namespace TextFromScreen
                 }
                 bitmap.Save("test.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             }
-            Visible = true;
-            take.Enabled = false;
-            TakeScreeenshotBtn.Enabled = false;
-            IronTesseract ocr = new IronTesseract();
-            ocr.AddSecondaryLanguage(OcrLanguage.Russian);
-            ocr.AddSecondaryLanguage(OcrLanguage.Ukrainian);
-            using (var Input = new IronOcr.OcrInput("test.jpg"))
-            {
-                OcrResult result = ocr.Read(Input);
-                richTextBox1.Text = result.Text;
-            }
-            Clipboard.SetText(richTextBox1.Text);
-        }
-
-        private void ToBufferBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        } 
     }
 }

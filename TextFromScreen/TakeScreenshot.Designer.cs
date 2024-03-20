@@ -35,11 +35,13 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            ControlBox = false;
+            MaximizeBox = false;
             Name = "TakeScreenshot";
-            Opacity = 0.3D;
+            Opacity = 0.1D;
             ShowIcon = false;
             ShowInTaskbar = false;
-            Text = "TakeScreenshot";
+            Text = " ";
             TopMost = true;
             ResumeLayout(false);
         }
